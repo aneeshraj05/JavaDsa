@@ -5,6 +5,8 @@
       <module fileurl="file://$PROJECT_DIR$/Arrays/Arrays.iml" filepath="$PROJECT_DIR$/Arrays/Arrays.iml" />
       <module fileurl="file://$PROJECT_DIR$/BinarySearch2D/BinarySearch2D.iml" filepath="$PROJECT_DIR$/BinarySearch2D/BinarySearch2D.iml" />
       <module fileurl="file://$PROJECT_DIR$/Numbers/Numbers.iml" filepath="$PROJECT_DIR$/Numbers/Numbers.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Patterns/Patterns.iml" filepath="$PROJECT_DIR$/Patterns/Patterns.iml" />
+      <module fileurl="file://$PROJECT_DIR$/RecursionTutorial/RecursionTutorial.iml" filepath="$PROJECT_DIR$/RecursionTutorial/RecursionTutorial.iml" />
       <module fileurl="file://$PROJECT_DIR$/SortingAlgorithms/SortingAlgorithms.iml" filepath="$PROJECT_DIR$/SortingAlgorithms/SortingAlgorithms.iml" />
       <module fileurl="file://$PROJECT_DIR$/project1.iml" filepath="$PROJECT_DIR$/project1.iml" />
     </modules>
