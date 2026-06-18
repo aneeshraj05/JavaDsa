@@ -1,0 +1,323 @@
+@font-face {
+  font-family: "bh";
+  src: url(Chalk.ttf);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+.desk {
+  min-height: 100vh;
+  position: relative;
+}
+section{
+    background: #fffaf5;
+
+}
+/* ================= THE OVERALL PAGE CONTAINER ================= */
+.about-page {
+  width: 100%;
+  background-color: #fcfbf7; 
+  font-family: monospace;
+}
+
+.about-content {
+  width: 100%;
+  margin: 0 auto;
+}
+
+/* ================= INDIVIDUAL 100VH VIEWPORT PAGES ================= */
+.about-me-section,
+.projects-combined-page,
+.contact-section {
+  width: 100%;
+  min-height: 90vh; /* Forces each structural page to fill the frame completely */
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* Vertically centers the text configurations inside the screen viewport */
+  padding: 60px 10%; 
+  box-sizing: border-box;
+  margin-top: 0 !important; /* Overwrites legacy stack breaks */
+}
+
+/* Layout spacing rules inside the combined page container */
+.projects-combined-page {
+  gap: 50px; /* Creates clean breathing space between Cooking and Recently Made */
+}
+
+/* ================= EDITORIAL TYPOGRAPHY SEPARATORS ================= */
+.cooking-block{
+  margin-top: 40px;
+}
+.about-me-section h2,
+.cooking-block h2,
+.recent-block h2,
+.contact-section h2 {
+  font-family: "c";
+  font-size: 1.3rem;
+  color: #6a6a6d;
+  margin-bottom: 24px;
+  font-weight: normal;
+}
+
+.about-me-section p,
+.cooking-block p,
+.contact-intro {
+  font-size: 1.05rem;
+  color: #555;
+  line-height: 2.2;
+  max-width: 900px;
+  margin-bottom: 16px;
+}
+
+.handwritten {
+  font-family: "bh";
+  font-size: 1.2rem;
+  color: #222;
+}
+
+/* ================= INTERACTIVE PROJECTS LIST ================= */
+.project-list {
+  margin-top: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+/* The Link Wrapper */
+.project-card-link {
+  text-decoration: none;
+  display: block;
+}
+
+/* The Animated Card */
+.project-card {
+  width: 100%;
+  max-width: 500px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  border: 1px solid #e3ddd7;
+  border-radius: 22px;
+  padding: 10px;
+  background: #fcf7f2;
+
+  /* Performance & Smoothness setup for GSAP calculations */
+  transition: none !important;
+  will-change: transform;
+  cursor: pointer;
+  backface-visibility: hidden;
+}
+
+.project-card img {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 24px;
+  flex-shrink: 0;
+}
+
+.project-card h3 {
+  font-weight: normal;
+  font-size: 1.1rem;
+  color: #666;
+  margin-bottom: 6px;
+}
+
+.project-card p {
+  font-size: 0.85rem;
+  color: #777;
+}
+
+/* ================= SKILLS TAG MANAGEMENT ================= */
+.skills-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+  margin-top: 30px;
+  padding-left: 8px;
+}
+
+.skill-tag {
+  font-family: monospace;
+  font-size: 1rem;
+  font-weight: bold;
+  color: #444;
+  padding: 4px 10px;
+}
+
+/* ================= CONTACT SECTION ELEMENTS ================= */
+.contact-card-wrapper {
+  max-width: 600px;
+  margin-bottom: 40px;
+}
+
+.email-link {
+  display: inline-block;
+  font-family: monospace;
+  font-size: 1.6rem;
+  font-weight: bold;
+  color: #222;
+  text-decoration: none;
+  border-bottom: 2px dashed #d97706;
+  padding-bottom: 4px;
+  transition: color 0.2s ease, border-color 0.2s ease;
+}
+
+.email-link:hover {
+  color: #d97706;
+  border-bottom-style: solid;
+}
+
+/* Footer Quotes & Metrics Container */
+.contact-footer-metrics {
+  margin-top: 20px;
+  max-width: 750px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  border-top: 1px solid #e3ddd7;
+  padding-top: 30px;
+}
+
+.anime-quote-block {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.quote-label {
+  font-size: 0.8rem;
+  color: #9a9a9f;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.quote-text {
+  font-family: "bh", sans-serif;
+  font-size: 1.3rem;
+  color: #333;
+  line-height: 1.5;
+  margin: 0;
+}
+
+/* Live Visitor Metric Badge */
+.visitor-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: #f5efe6;
+  border: 1px solid #e3ddd7;
+  padding: 8px 14px;
+  border-radius: 8px;
+  align-self: flex-start;
+}
+
+.badge-pulse {
+  width: 8px;
+  height: 8px;
+  background-color: #10b981;
+  border-radius: 50%;
+  display: inline-block;
+  box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.4);
+  animation: liveCounterPulse 2s infinite;
+}
+
+.visitor-label {
+  font-size: 0.85rem;
+  color: #666;
+}
+
+.visitor-number {
+  font-family: monospace;
+  font-size: 0.95rem;
+  font-weight: bold;
+  color: #111;
+  background: rgba(255, 255, 255, 0.6);
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+
+@keyframes liveCounterPulse {
+  0% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7);
+  }
+  70% {
+    transform: scale(1);
+    box-shadow: 0 0 0 6px rgba(16, 185, 129, 0);
+  }
+  100% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(16, 185, 129, 0);
+  }
+}
+
+/* ================= INTERACTIVE WORKSPACE ITEMS ================= */
+.envelope-click-zone {
+  display: inline-block;
+  cursor: pointer;
+}
+
+/* Pure CSS hover transition handling for all desk objects */
+.note, .camera, .pen, .envelope {
+  will-change: transform;
+  transition: transform 0.35s cubic-bezier(0.25, 1, 0.5, 1) !important;
+}
+
+.note:hover, .camera:hover, .pen:hover, .envelope:hover {
+  transform: translateY(-8px) scale(1.04);
+}
+
+/* ================= FLOATING NARRATOR ELEMENT ================= */
+.floating-narrator-comment {
+  position: fixed;
+  bottom: 30px;
+  left: 40px;
+  z-index: 999;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 0.9rem;
+  color: #7d7973; 
+  background: rgba(255, 250, 245, 0.85);
+  padding: 8px 16px;
+  border-radius: 6px;
+  border: 1px dashed #e3ddd7;
+  pointer-events: none; 
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.02);
+  backdrop-filter: blur(4px);
+  will-change: transform, opacity;
+}
+
+/* ================= DARK MODE / CHAOS OVERRIDES ================= */
+body[data-mode="chaos"] .floating-narrator-comment {
+  color: #a09d98;
+  background: rgba(30, 30, 32, 0.85);
+  border-color: #444;
+}
+
+body[data-mode="chaos"] .contact-footer-metrics {
+  border-color: #444;
+}
+
+body[data-mode="chaos"] .visitor-badge {
+  background: #252529;
+  border-color: #444;
+}
+
+body[data-mode="chaos"] .visitor-number {
+  background: rgba(0, 0, 0, 0.4);
+  color: #fff;
+}
+
+body[data-mode="chaos"] .visitor-label {
+  color: #aaa;
+}
+
+body[data-mode="chaos"] .email-link {
+  color: #eee;
+}
+
+body[data-mode="chaos"] .quote-text {
+  color: #bbb;
+}

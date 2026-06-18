@@ -1,0 +1,265 @@
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  @font-face {
+    font-family: courier;
+    src: url(../../fonts/courier-prime.regular.ttf);
+  }
+
+  /* Base Wrapper - Using just .music-player to link with your index.css modes */
+  .music-player {
+    font-family: "c", courier, monospace;
+    position: absolute;
+
+    /* Sleek, thin, and compact dimensions */
+    width: 240px; 
+    height: 330px; 
+    
+    background: transparent;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    border-radius: 28px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 20px 16px;
+    gap: 10px;
+    
+  }
+
+
+  /* --- Adaptive Typography & Borders based on your Desk Modes --- */
+
+  /* Coffee / Clean Modes (Darker Text Needs a Delicate Muted Shade) */
+  body[data-mode="coffee"] .music-player .track-title,
+  body[data-mode="clean"] .music-player .track-title {
+    color: #4a4744;
+    font-weight: 400;
+  }
+  body[data-mode="coffee"] .music-player .artist-name,
+  body[data-mode="clean"] .music-player .artist-name,
+  body[data-mode="coffee"] .music-player .time,
+  body[data-mode="clean"] .music-player .time {
+    color: #a6a09b;
+      font-weight: 400;
+
+  }
+
+  /* Chaos Mode (Dark Screen Mode - Needs crisp, light glowing text fields) */
+  body[data-mode="chaos"] .music-player {
+
+  }
+  body[data-mode="chaos"] .music-player .track-title {
+      color: #4a4744;
+        font-weight: 400;
+
+
+  }
+  body[data-mode="chaos"] .music-player .artist-name,
+  body[data-mode="chaos"] .music-player .time {
+      color: #a6a09b;
+        font-weight: 400;
+
+
+  }
+
+  /* --- Vinyl Architecture --- */
+  .vinyl {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    background: repeating-radial-gradient(
+      circle,
+      #181818 0px,
+      #181818 3px,
+      #222222 4px,
+      #181818 6px
+    );
+    position: relative;
+    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.12);
+  }
+
+  .vinyl {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    background: repeating-radial-gradient(
+      circle,
+      #181818 0px,
+      #181818 3px,
+      #222222 4px,
+      #181818 6px
+    );
+    position: relative;
+    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.12);
+
+    /* Always spinning */
+    animation: spin 10s linear infinite;
+  }
+
+  .label {
+    width: 58px;
+    height: 58px;
+    border-radius: 50%;
+    background: conic-gradient(#d63131 0deg 180deg, #f5f0e8 180deg 360deg);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  .label::after {
+    content: "";
+    width: 6px;
+    height: 6px;
+    background: #111;
+    border-radius: 50%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  /* --- Animating Audio Beats System --- */
+  .player-status-icon {
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    gap: 3px;
+    height: 16px;
+    width: 30px;
+    margin-top: 2px;
+    background: transparent;
+  }
+
+  .player-status-icon .beat-bar {
+    width: 3px;
+    height: 100%;
+    background: #b3b0ad; /* Fallback light default color */
+    border-radius: 1px;
+    transform-origin: bottom;
+    transform: scaleY(0.25);
+    transition: transform 0.3s ease, background-color 0.3s ease;
+  }
+
+  /* Matches theme colors when inactive */
+
+  /* FIXED SPECIFICITY: Triggers active keyframe animation across all modes */
+  body[data-mode] .music-player.playing .player-status-icon .beat-bar {
+    background: #cccccc !important;
+  }
+
+  .player-status-icon .beat-bar:nth-child(1) {
+    animation: beatBounce 0.8s ease-in-out infinite alternate;
+  }
+
+  .player-status-icon .beat-bar:nth-child(2) {
+    animation: beatBounce 0.5s ease-in-out infinite alternate 0.15s;
+  }
+
+  .player-status-icon .beat-bar:nth-child(3) {
+    animation: beatBounce 0.9s ease-in-out infinite alternate 0.05s;
+  }
+
+  .player-status-icon .beat-bar:nth-child(4) {
+    animation: beatBounce 0.6s ease-in-out infinite alternate 0.2s;
+  }
+  @keyframes beatBounce {
+    0% { transform: scaleY(0.25); }
+    100% { transform: scaleY(1); }
+  }
+
+  /* --- Layout Controls Subsystem --- */
+  .player-info {
+    background: transparent;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    gap: 12px;
+  }
+
+  .song-details {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: transparent;
+    text-align: center;
+    gap: 2px;
+  }
+
+  .artist-name {
+    font-size: 12px;
+    font-weight: 500;
+    background: transparent;
+    letter-spacing: 0.3px;
+  }
+
+  .track-title {
+    font-size: 16px;
+    font-weight: 700;
+    background: transparent;
+  }
+
+  .progress-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    background: transparent;
+    gap: 8px;
+  }
+
+  .progress-line {
+    background: rgba(0, 0, 0, 0.08);
+    width: 100%;
+    height: 4px;
+    position: relative;
+    border-radius: 2px;
+    cursor: pointer;
+  }
+
+  body[data-mode="chaos"] .progress-line {
+    background: #EBE6E2;
+  }
+
+  .progress-dot {
+    width: 9px;
+    height: 9px;
+    background: #8a8580;
+    border-radius: 50%;
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  body[data-mode="chaos"] .progress-dot {
+    background: #9a9795;
+  }
+
+  .progress-line:hover .progress-dot {
+    background: #6b6c6b !important;
+  }
+
+  .time {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    font-size: 12px;
+    background: transparent;
+    font-weight: bold;
+  }
+
+  .time span, .time .divider {
+    background: transparent;
+  }
+
+  @keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }

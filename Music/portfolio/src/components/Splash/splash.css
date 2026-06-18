@@ -1,0 +1,23 @@
+.splash-effect {
+     position: fixed;
+
+  position: absolute;
+  pointer-events: none;
+  width: 30px;
+  height: 30px;
+  z-index: 9999;
+  background: transparent;
+}
+
+.splash-effect svg {
+  transform: rotate(-20deg);
+  overflow: visible;
+    background: transparent;
+
+}
+
+.splash-effect line {
+  transform-origin: center;
+    background: transparent;
+
+}

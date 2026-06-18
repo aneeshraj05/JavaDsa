@@ -1,0 +1,488 @@
+* {
+  box-sizing: border-box;
+}
+
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+@font-face {
+  font-family: "c";
+  src: url(fonts/courier-prime.regular.ttf);
+}
+
+html,
+body {
+  background: #fffaf5;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  width: 100%;
+}
+
+.desk {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.toolbar {
+  position: absolute;
+  bottom: 100px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 50;
+}
+
+.details {
+  position: absolute;
+}
+
+.camera-container,
+.envelope-container,
+.note-container {
+  position: absolute;
+  background: transparent;
+  width: 100%;
+}
+
+.camera-container { max-width: 300px; }
+.envelope-container { max-width: 300px; }
+.note-container { max-width: 500px; margin: 0; z-index: 10000; }
+
+.menu {
+  position: fixed;
+  top: 50px;
+  right: 70px;
+  z-index: 100;
+}
+
+.menu button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  color: #908d8b;
+  font-family: "c";
+}
+
+/* ================= DESKTOP DECORATION POSITIONING ================= */
+body[data-mode="coffee"] .note-container {
+  left: -200px;
+  bottom: 90px;
+  transform: rotate(-20deg);
+}
+body[data-mode="coffee"] .camera-container {
+  top: -10px;
+  left: 5%;
+  transform: rotate(20deg);
+}
+body[data-mode="coffee"] .envelope-container {
+  right: 150px;
+  bottom: 30px;
+  opacity: 1;
+}
+body[data-mode="coffee"] .details {
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  align-items: center;
+  text-align: center;
+}
+body[data-mode="coffee"] .music-player { top: 150px; right: 30px; }
+body[data-mode="coffee"] .lamp-container { top: 150px; left: 30px; width: 250px; }
+
+body[data-mode="clean"] .lamp-container { top: 150px; right: 30px; width: 200px; }
+body[data-mode="chaos"] .lamp-container { display: none; }
+
+body[data-mode="clean"] .note-container { left: -190px; bottom: 30px; }
+body[data-mode="clean"] .camera-container { top: 10%; left: 10%; }
+body[data-mode="clean"] .envelope-container { right: 90px; bottom: 30px; }
+body[data-mode="clean"] .music-player {
+  top: -150px;
+  left: 50%;
+  transform: translateX(-50%) translateY(200px);
+}
+body[data-mode="clean"] .pen-container {
+  top: 50px;
+  left: 50%;
+  transform: translateX(30%) translateY(190px);
+  right: 200px;
+}
+body[data-mode="clean"] .details {
+  top: 250px;
+  right: 70px;
+  text-align: right;
+  z-index: 5;
+}
+
+body[data-mode="chaos"] .social-links { align-self: flex-end; }
+body[data-mode="chaos"] .note-container { left: 350px; bottom: 250px; transform: rotate(-12deg); }
+body[data-mode="chaos"] .details {
+  left: 500px;
+  top: 130px;
+  transform: rotate(-12deg);
+  z-index: 100;
+  text-align: center;
+}
+body[data-mode="chaos"] .social-links {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+body[data-mode="chaos"] .camera-container { left: 15%; top: 5%; transform: rotate(18deg); }
+body[data-mode="chaos"] .envelope-container { right: 250px; bottom: 180px; transform: rotate(-20deg); }
+
+body[data-mode="coffee"] .quotes-container,
+body[data-mode="clean"] .quotes-container { top: 150px; right: 30px; }
+body[data-mode="chaos"] .quotes-container { top: 100px; right: 300px; }
+
+.tool { font-family: "c"; }
+
+@media screen and (max-width: 1000px) {
+  .tool { opacity: 0; }
+  .note-container:hover { transform: scale(0.8) translateY(50px); }
+}
+
+/* ================= MOBILE DESIGN OVERRIDE ================= */
+@media screen and (max-width: 768px) {
+  html, body {
+    overflow-x: hidden;
+    width: 100%;
+  }
+
+  .desk {
+    height: 100vh !important;
+    height: 100dvh !important;
+    min-height: 100vh !important;
+    position: relative !important;
+    overflow: hidden !important;
+    display: block !important;
+    padding: 0 !important;
+    background: #fffaf5 !important;
+  }
+
+  /* Reset layout constraints while conserving layering stack */
+  body[data-mode] .note-container,
+  body[data-mode] .details,
+  body[data-mode] .camera-container,
+  body[data-mode] .envelope-container,
+  body[data-mode] .music-player,
+  body[data-mode] .lamp-container,
+  body[data-mode] .quotes-container,
+  body[data-mode] .pen-container {
+    position: absolute !important;
+    display: block !important;
+    margin: 0 !important;
+    transform: none !important;
+  }
+
+  /* Hidden desktop assets on narrow screen sizes */
+  .tool {
+    display: none !important;
+  }
+
+  /* ============================================================
+     IMMERSIVE FULL-BLEED COLLAGE LAYOUT
+     ============================================================ */
+
+  /* 1. Vintage Desk Lamp — LARGE, bleeding off top-left */
+  body[data-mode] .lamp-container {
+    width: 240px !important;
+    top: -5vh !important;
+    left: -10vw !important;
+    z-index: 6 !important;
+  }
+
+  body[data-mode] .lamp-wrapper::after {
+    display: none !important;
+  }
+
+  /* 2. Vinyl Record — top-right, large card container bleeding off edge */
+  body[data-mode] .music-player {
+    position: absolute !important;
+    display: flex !important;
+    width: 240px !important;
+    height: 240px !important;
+    top: -4vh !important;
+    right: -12vw !important;
+    left: auto !important;
+    z-index: 5 !important;
+    background: #ffffff !important;
+    border: 1px solid rgba(0, 0, 0, 0.05) !important;
+    border-radius: 32px !important;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.04) !important;
+    padding: 20px !important;
+    gap: 0 !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    transform: rotate(6deg) !important;
+  }
+
+  /* Make the vinyl disc itself larger on mobile */
+  body[data-mode] .music-player .vinyl {
+    width: 200px !important;
+    height: 200px !important;
+  }
+
+  body[data-mode] .music-player .label {
+    width: 76px !important;
+    height: 76px !important;
+  }
+
+  /* Hide all player UI except the vinyl disc */
+  body[data-mode] .music-player .player-info,
+  body[data-mode] .music-player .player-status-icon {
+    display: none !important;
+  }
+
+  /* 3. Scrap Paper Quotes — left side, below lamp */
+  body[data-mode] .quotes-container {
+    width: 160px !important;
+    top: 26vh !important;
+    left: -8vw !important;
+    right: auto !important;
+    z-index: 3 !important;
+    transform: rotate(-10deg) !important;
+  }
+
+  /* 4. Open Grid Notebook — Large, tilted, filling lower half */
+  body[data-mode] .note-container {
+    width: 140vw !important;
+    max-width: none !important;
+    left: -18vw !important;
+    top: 36vh !important;
+    z-index: 25 !important;
+    transform: rotate(-12deg) !important;
+  }
+
+  body[data-mode] .note-container .notebook-image {
+    width: 100% !important;
+    max-width: none !important;
+  }
+
+  /* 5. Details (name, title, desc) — overlaid on the notebook */
+  body[data-mode] .details {
+    width: 90vw !important;
+    left: 10vw !important;
+    top: 50vh !important;
+    text-align: left !important;
+    z-index: 30 !important;
+    transform: rotate(-12deg) !important;
+  }
+
+  body[data-mode] .details .details-name {
+    font-size: 3.5rem !important;
+    margin-bottom: 8px !important;
+    line-height: 1.1 !important;
+    color: #3a383d !important;
+  }
+
+  body[data-mode] .details .details-title {
+    gap: 2px !important;
+  }
+
+  body[data-mode] .details .details-title h2 {
+    font-size: 1.15rem !important;
+    color: #4a4744 !important;
+  }
+
+  body[data-mode] .details .details-title span {
+    font-size: 1.05rem !important;
+  }
+
+  body[data-mode] .details .details-description {
+    font-size: 1.05rem !important;
+    line-height: 1.5 !important;
+    max-width: 320px !important;
+    color: #555555 !important;
+    margin-top: 12px !important;
+  }
+
+  body[data-mode] .details .social-links {
+    display: none !important;
+  }
+
+  /* 6. Fountain Ink Pen — right side alongside notebook */
+  body[data-mode] .pen-container {
+    width: 35px !important;
+    height: auto !important;
+    top: 48vh !important;
+    right: 8vw !important;
+    left: auto !important;
+    z-index: 32 !important;
+    transform: rotate(18deg) !important;
+  }
+
+  /* 7. Retro Polaroid Camera — bottom-left, bleeding off edge */
+  body[data-mode] .camera-container {
+    width: 140px !important;
+    bottom: 2vh !important;
+    top: auto !important;
+    left: -5vw !important;
+    z-index: 12 !important;
+    transform: rotate(-8deg) !important;
+  }
+
+  /* 8. Envelope — bottom-right area */
+  body[data-mode] .envelope-container {
+    width: 130px !important;
+    bottom: 3vh !important;
+    top: auto !important;
+    right: -4vw !important;
+    z-index: 41 !important;
+    transform: rotate(6deg) !important;
+  }
+
+  /* Hide toolbar and narrator for immersive feel */
+  .toolbar {
+    display: none !important;
+  }
+
+  .floating-narrator-comment {
+    display: none !important;
+  }
+
+  .menu {
+    top: 16px;
+    right: 16px;
+    z-index: 1000;
+  }
+
+  /* ---------------- Below-The-Fold Sections ---------------- */
+  .about-content {
+    padding: 0 20px;
+    width: 100%;
+  }
+
+  .about-me-section,
+  .projects-combined-page,
+  .contact-section {
+    min-height: auto;
+    padding: 60px 0;
+    width: 100%;
+  }
+
+  .about-me-section h2,
+  .recent-block h2,
+  .cooking-block h2,
+  .contact-section h2 {
+    font-size: 1.75rem;
+    margin-bottom: 16px;
+  }
+
+  /* Typography Tightening for Mobile */
+  .about-me-section p,
+  .cooking-block p,
+  .contact-intro {
+    font-size: 1rem !important;
+    line-height: 1.65 !important;
+    margin-bottom: 14px !important;
+  }
+
+  .skills-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    justify-content: flex-start !important;
+    margin-top: 20px;
+    padding: 0 !important;
+  }
+
+  .skill-wrapper {
+    display: inline-block;
+    padding: 2px 0;
+  }
+
+  .skill-tag {
+    padding: 4px 10px 4px 0 !important; /* Align left edge of bracket with text start */
+  }
+
+  /* ---------------- Recently Made Cards Section ---------------- */
+  .cooking-block {
+    margin-top: 0 !important;
+  }
+
+  .recent-block {
+    width: 100%;
+    padding: 0 !important;
+    margin-top: 40px !important;
+  }
+
+  .project-list {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    width: 100%;
+  }
+
+  .project-card-link {
+    text-decoration: none;
+    color: inherit;
+    width: 100%;
+    display: block;
+  }
+
+  .project-card {
+    width: 100%;
+    background: #fffbf7;
+    border: 1px solid #f3ece3;
+    border-radius: 20px;
+    padding: 18px 20px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 20px;
+    box-shadow: 0 2px 8px rgba(220, 200, 180, 0.15);
+    transition: none !important;
+  }
+
+  .project-card img {
+    width: 68px !important;
+    height: 68px !important;
+    min-width: 68px !important;
+    object-fit: cover;
+    border-radius: 14px;
+    margin-bottom: 0 !important;
+  }
+
+  .project-card > div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 4px;
+  }
+
+  .project-card h3 {
+    font-family: "c", monospace;
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: #4a4542;
+    margin: 0;
+  }
+
+  .project-card p {
+    font-family: "c", monospace;
+    font-size: 0.9rem;
+    color: #8c857f;
+    line-height: 1.3;
+    margin: 0;
+  }
+
+  /* Disable touch scaling jumps */
+  .project-card:hover,
+  .note-container:hover {
+    transform: none !important;
+  }
+}

@@ -1,0 +1,40 @@
+.envelope-container {
+  font-family: "c";
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  background: transparent;
+}
+
+.envelope-image {
+  width: 350px;
+  max-width: 100%;
+  height: auto;
+  object-fit: contain;
+  background: transparent;
+}
+
+/* Tooltip */
+.envelope-container::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-40%);
+
+  background: #000;
+  color: #fff;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 12px;
+  white-space: nowrap;
+
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease;
+}
+
+.envelope-container:hover::after {
+  opacity: 1;
+}

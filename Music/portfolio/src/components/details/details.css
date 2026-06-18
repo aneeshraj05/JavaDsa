@@ -1,0 +1,98 @@
+.details {
+  display: flex;
+  flex-direction: column;
+
+
+  margin-top: 80px;
+  gap: 24px;
+  background: transparent;
+}
+@font-face {
+  font-family: "brit";
+  src: url("../../fonts/BrittanySignature.ttf") format("truetype");
+}
+.details-name {
+  font-family: "brit",cursive;
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: #47464d;
+  line-height: 1;
+    background: transparent;
+}
+
+.details-title {
+  display: flex;
+  flex-direction: column;
+
+  gap: 4px;
+    background: transparent;
+}
+
+.details-title h2 {
+  font-family: monospace;
+  font-size: 1rem;
+  font-weight: 400;
+  color: #5c5957;
+    background: transparent;
+}
+
+.details-title span {
+  font-size: 1rem;
+  font-style: italic;
+  color: #7a7673;
+    background: transparent;
+}
+
+.details-description {
+  max-width: 400px;
+
+  font-family: monospace;
+  font-size: 1rem;
+  line-height: 1.5;
+  background: transparent;
+  color: #555;
+}
+
+.social-links {
+  display: flex;
+  gap: 16px;
+}
+.social-links img {
+  width: 20px;
+  cursor: pointer;
+
+  transition: transform 0.3s ease;
+}
+
+.social-links img:hover {
+  transform:scale(1.1);
+}
+.social-icon::after {
+  content: attr(data-tooltip);
+
+  position: absolute;
+  top: 130%;
+  left: 50%;
+
+  transform: translateX(-50%) translateY(-50px);
+
+  background: #000;
+  color: #fff;
+
+  padding: 6px 10px;
+  border-radius: 8px;
+
+  font-size: 10px;
+  font-family: monospace;
+  white-space: nowrap;
+
+  opacity: 0;
+  pointer-events: none;
+
+  transition: all 0.1s ease;
+}
+
+.social-icon:hover::after {
+  opacity: 1;
+  transform: translateX(-50%) translateY(-60px);
+}

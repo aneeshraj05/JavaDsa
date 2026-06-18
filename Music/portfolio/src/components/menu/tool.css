@@ -1,0 +1,66 @@
+.toolbar {
+  display: flex;
+  gap: 12px;
+  padding: 12px;
+  
+  border-radius: 20px;
+}
+
+.tool {
+  width: 48px;
+  height: 48px;
+background: none;
+
+  border: 1px solid #d8d1ca;
+  border-radius: 18px;
+
+  background: transparent;
+  color: #6d6863;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  cursor: pointer;
+  transition: all 0.1s ease-in-out;
+}
+.tool svg {
+  fill: none;
+  background: none;
+}
+
+.tool::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  top: 120%;
+  left: 50%;
+  transform: translateX(-50%) translateY(10px);
+
+  background: black;
+  color: white;
+  padding: 6px 10px;
+  border-radius: 8px;
+
+  font-size: 10px;
+  white-space: nowrap;
+
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.25s ease;
+}
+
+.tool:hover::after {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+.tool.active {
+  background:#bab1a9;
+  border:none;
+  color: #f7f4ee;
+  border-color: #222;
+
+  transform: translateY(-2px);
+}
+.tool:hover {
+  transform: translateY(-2px);
+}

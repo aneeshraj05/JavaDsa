@@ -1,0 +1,17 @@
+.quotes-container {
+  font-family: "c";
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  background: transparent;
+  position: absolute;
+}
+
+.quotes-image {
+  width: 190px;
+  max-width: 100%;
+  height: auto;
+  object-fit: contain;
+  background: transparent;
+}

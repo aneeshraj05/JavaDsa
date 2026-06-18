@@ -1,0 +1,44 @@
+@font-face {
+  font-family: "c";
+  src: url(../../fonts/courier-prime.regular.ttf);
+}
+
+.menu {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+
+  width: fit-content;
+  overflow: visible;
+}
+
+
+.menu-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  overflow: visible;
+}
+
+.menu button {
+  border: none;
+  background: transparent;
+
+  font-family: "c";
+  font-size: 1rem;
+  color: #777;
+
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.menu button:hover {
+  color: #000;
+}
+
+.menu-link {
+  text-decoration: none;
+color: #777;
+  font-family: "c";}
