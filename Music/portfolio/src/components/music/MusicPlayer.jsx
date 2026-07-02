@@ -76,7 +76,6 @@ export default function MusicPlayer({ audioUnlocked, className }) {
 
       <audio ref={audioRef} src={song} preload="metadata" />
 
-      {/* Real-time spectrum elements */}
       <div className="player-status-icon">
         <div className="beat-bar"></div>
         <div className="beat-bar"></div>

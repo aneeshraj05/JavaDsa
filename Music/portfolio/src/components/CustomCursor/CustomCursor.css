@@ -1,0 +1,63 @@
+/* Wrapper for both cursors — handles the entrance fade/scale */
+.collab-cursors-wrapper {
+  pointer-events: none;
+  position: fixed;
+  inset: 0;
+  z-index: 999999;
+  opacity: 0; /* starts hidden, GSAP animates this in */
+}
+
+.collab-cursor-container {
+  position: fixed;
+  pointer-events: none;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  /* GSAP uses transform: translate(x,y) — offset to align tip with hot-spot */
+  will-change: transform;
+  top: 0;
+  left: 0;
+}
+
+.collab-cursor-arrow {
+  filter: drop-shadow(0px 2px 5px rgba(0, 0, 0, 0.18));
+}
+
+.collab-cursor-label {
+  margin-top: 3px;
+  margin-left: 16px;
+  padding: 5px 14px;
+  border-radius: 20px;
+  color: white;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  font-size: 0.9rem;
+  font-weight: 600;
+  box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.18);
+  white-space: nowrap;
+  transform-origin: left center;
+  will-change: transform;
+}
+
+/* Static Aneesh cursor — positioned freely in the section */
+.static-cursor {
+  top: 45%;
+  right: 22%;
+  left: auto;
+}
+
+/* ── Hide system cursor while custom cursor is active ── */
+body.hide-default-cursor,
+body.hide-default-cursor * {
+  cursor: none !important;
+}
+
+/* ── Mobile: never show custom cursors ── */
+@media screen and (max-width: 768px) {
+  .collab-cursors-wrapper {
+    display: none !important;
+  }
+  body.hide-default-cursor,
+  body.hide-default-cursor * {
+    cursor: auto !important;
+  }
+}

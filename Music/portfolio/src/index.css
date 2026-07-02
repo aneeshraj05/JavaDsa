@@ -50,7 +50,12 @@ body {
 
 .camera-container,
 .envelope-container,
-.note-container {
+.note-container,
+.cr-container,
+.photo-container,
+.pen-container,
+.cursor-container,
+.quotes-container {
   position: absolute;
   background: transparent;
   width: 100%;
@@ -59,6 +64,11 @@ body {
 .camera-container { max-width: 300px; }
 .envelope-container { max-width: 300px; }
 .note-container { max-width: 500px; margin: 0; z-index: 10000; }
+.cr-container { max-width: 150px; z-index: 10002;}
+.photo-container { max-width: 250px; z-index: 10001; }
+.pen-container { max-width: 50px; z-index: 10003; }
+.cursor-container { max-width: 50px; z-index: 10004; }
+.quotes-container { max-width: 120px; z-index: 10005; }
 
 .menu {
   position: fixed;
@@ -78,61 +88,108 @@ body {
 
 /* ================= DESKTOP DECORATION POSITIONING ================= */
 body[data-mode="coffee"] .note-container {
-  left: -200px;
-  bottom: 90px;
-  transform: rotate(-20deg);
+  left: -80px;
+  top: 130px;
+  transform: rotate(-10deg);
 }
-body[data-mode="coffee"] .camera-container {
-  top: -10px;
-  left: 5%;
-  transform: rotate(20deg);
+body[data-mode="coffee"] .lamp-container {
+  top: -30px;
+  left: 30px;
+  width: 300px;
+}
+body[data-mode="coffee"] .music-player { 
+  top: 40px; 
+  right: 50px; 
 }
 body[data-mode="coffee"] .envelope-container {
-  right: 150px;
-  bottom: 30px;
+  top: 380px;
+  right: 80px;
   opacity: 1;
+  transform: rotate(-8deg);
+}
+body[data-mode="coffee"] .photo-container {
+  top: 550px;
+  right: 50px;
+  transform: rotate(0deg);
+}
+body[data-mode="coffee"] .cr-container {
+  top: 450px;
+  left: 40px;
+  transform: rotate(-15deg);
+}
+body[data-mode="coffee"] .pen-container {
+  top: 350px;
+  left: 100px;
+  transform: rotate(10deg);
+}
+body[data-mode="coffee"] .camera-container {
+  top: auto;
+  bottom: -20px;
+  left: 120px;
+  transform: rotate(15deg);
+}
+body[data-mode="coffee"] .cursor-container {
+  top: 80px;
+  right: 320px;
+  transform: rotate(15deg);
+}
+body[data-mode="coffee"] .quotes-container {
+  top: 200px;
+  left: -10px;
+  transform: rotate(-5deg);
 }
 body[data-mode="coffee"] .details {
-  top: 40%;
+  top: 45%;
   left: 50%;
   transform: translate(-50%, -50%);
   align-items: center;
   text-align: center;
 }
-body[data-mode="coffee"] .music-player { top: 150px; right: 30px; }
-body[data-mode="coffee"] .lamp-container { top: 150px; left: 30px; width: 250px; }
 
-body[data-mode="clean"] .lamp-container { top: 150px; right: 30px; width: 200px; }
+body[data-mode="clean"] .lamp-container { top: 50px; left: 30px; width: 150px; }
 body[data-mode="chaos"] .lamp-container { display: none; }
-
-body[data-mode="clean"] .note-container { left: -190px; bottom: 30px; }
-body[data-mode="clean"] .camera-container { top: 10%; left: 10%; }
+body[data-mode="clean"] .photo-container { top:60px; right:150px}
+body[data-mode="clean"] .note-container { left: -190px; bottom: 70px; }
+body[data-mode="clean"] .camera-container { top: 10%; left: 10%;display: none;}
 body[data-mode="clean"] .envelope-container { right: 90px; bottom: 30px; }
+body[data-mode="clean"] .cursor-container { top: 150px; right: 120px; }
 body[data-mode="clean"] .music-player {
   top: -150px;
   left: 50%;
   transform: translateX(-50%) translateY(200px);
 }
+body[data-mode="clean"] .cr-container{
+  top:150px;
+  left:210px;
+  width: 100px;
+}
+body[data-mode="clean"] .quotes-container {
+  top: 150px;
+  left: 350px;
+}
 body[data-mode="clean"] .pen-container {
-  top: 50px;
-  left: 50%;
-  transform: translateX(30%) translateY(190px);
-  right: 200px;
+  top: 60px;
+ 
+  right: 400px;
+  width: 35px;
 }
 body[data-mode="clean"] .details {
-  top: 250px;
+  top: 350px;
   right: 70px;
   text-align: right;
   z-index: 5;
 }
+body[data-mode="clean"] .details .social-links {
+  transform: translateX(340px);
+}
 
 body[data-mode="chaos"] .social-links { align-self: flex-end; }
-body[data-mode="chaos"] .note-container { left: 350px; bottom: 250px; transform: rotate(-12deg); }
+body[data-mode="chaos"] .note-container { left: 450px; bottom: 250px; transform: rotate(-12deg); }
 body[data-mode="chaos"] .details {
   left: 500px;
-  top: 130px;
+  top: 290px;
   transform: rotate(-12deg);
-  z-index: 100;
+  z-index: 1000000;
   text-align: center;
 }
 body[data-mode="chaos"] .social-links {
@@ -143,7 +200,6 @@ body[data-mode="chaos"] .social-links {
 body[data-mode="chaos"] .camera-container { left: 15%; top: 5%; transform: rotate(18deg); }
 body[data-mode="chaos"] .envelope-container { right: 250px; bottom: 180px; transform: rotate(-20deg); }
 
-body[data-mode="coffee"] .quotes-container,
 body[data-mode="clean"] .quotes-container { top: 150px; right: 30px; }
 body[data-mode="chaos"] .quotes-container { top: 100px; right: 300px; }
 
@@ -316,9 +372,9 @@ body[data-mode="chaos"] .quotes-container { top: 100px; right: 300px; }
 
   /* 6. Fountain Ink Pen — right side alongside notebook */
   body[data-mode] .pen-container {
-    width: 35px !important;
+    width: 25px !important;
     height: auto !important;
-    top: 48vh !important;
+    top: 49vh !important;
     right: 8vw !important;
     left: auto !important;
     z-index: 32 !important;
@@ -345,7 +401,6 @@ body[data-mode="chaos"] .quotes-container { top: 100px; right: 300px; }
     transform: rotate(6deg) !important;
   }
 
-  /* Hide toolbar and narrator for immersive feel */
   .toolbar {
     display: none !important;
   }

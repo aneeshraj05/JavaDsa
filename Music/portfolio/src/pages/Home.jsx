@@ -18,6 +18,10 @@ import Lamp from "../components/lamp/lamp";
 import Quotes from "../components/quotes/quotes";
 import expense from "./expense.png";
 import resume from "./resume.pdf";
+import Cursor from "../components/cursor/cursor";
+import Cr from "../components/cameraroll/cr";
+import Photo from "../components/photoshop/photo";
+import CustomCursor from "../components/CustomCursor/CustomCursor";
 
 gsap.registerPlugin(Flip, ScrollTrigger);
 
@@ -32,6 +36,7 @@ const Home = () => {
   const [animateCookingNotations, setAnimateCookingNotations] = useState(false);
   const [selectedQuote, setSelectedQuote] = useState("");
   const [visitorCount, setVisitorCount] = useState(1024);
+  const [showCollabCursor, setShowCollabCursor] = useState(false);
 
   const projectListRef = useRef(null);
   const commentRef = useRef(null); 
@@ -155,13 +160,19 @@ const Home = () => {
         onEnter: () => {
           updateCommentText("// Here is what I'm cooking and building...");
           setAnimateCookingNotations(true);
+          setShowCollabCursor(true);
         },
         onEnterBack: () => {
           updateCommentText("// Here is what I'm cooking and building...");
           setAnimateCookingNotations(true);
+          setShowCollabCursor(true);
+        },
+        onLeave: () => {
+          setShowCollabCursor(false);
         },
         onLeaveBack: () => {
           setAnimateCookingNotations(false);
+          setShowCollabCursor(false);
         },
       });
 
@@ -179,6 +190,7 @@ const Home = () => {
 
   return (
     <div onClick={unlockAudio}>
+      <CustomCursor active={showCollabCursor} />
       <div ref={commentRef} className="floating-narrator-comment">
         {commentText}
       </div>
@@ -188,8 +200,11 @@ const Home = () => {
         <Toolbar mode={mode} setMode={setMode} />
         <Details />
         <Note audioUnlocked={audioUnlocked} />
+        <Cr/>
         <Camera />
+        <Photo audioUnlocked={audioUnlocked}/>
         <Pen audioUnlocked={audioUnlocked} />
+        <Cursor audioUnlocked={audioUnlocked}/>
         <Lamp />
         <Quotes />
         
