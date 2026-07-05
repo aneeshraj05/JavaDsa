@@ -12,6 +12,7 @@ const Photo = ({ audioUnlocked }) => {
       onMouseEnter={() => {
         if (audioUnlocked) {
           audioref.current.play();
+          audioref.current.volume = 0.1;
         } else {
           audioref.current.pause();
         }

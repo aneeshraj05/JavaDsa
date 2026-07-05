@@ -89,12 +89,13 @@ body {
 /* ================= DESKTOP DECORATION POSITIONING ================= */
 body[data-mode="coffee"] .note-container {
   left: -80px;
-  top: 130px;
-  transform: rotate(-10deg);
+  top: 290px;
+  transform: rotate(-35deg);
+  width: 1200px;
 }
 body[data-mode="coffee"] .lamp-container {
   top: -30px;
-  left: 30px;
+  left:-20px;
   width: 300px;
 }
 body[data-mode="coffee"] .music-player { 
@@ -114,19 +115,18 @@ body[data-mode="coffee"] .photo-container {
 }
 body[data-mode="coffee"] .cr-container {
   top: 450px;
-  left: 40px;
-  transform: rotate(-15deg);
+  left: 120px;
+  width: 120px;
+  transform: rotate(35deg);
 }
 body[data-mode="coffee"] .pen-container {
-  top: 350px;
-  left: 100px;
+  top: 190px;
+  left: 250px;
   transform: rotate(10deg);
+  width: 25px;
 }
 body[data-mode="coffee"] .camera-container {
-  top: auto;
-  bottom: -20px;
-  left: 120px;
-  transform: rotate(15deg);
+display: none;
 }
 body[data-mode="coffee"] .cursor-container {
   top: 80px;
@@ -134,9 +134,10 @@ body[data-mode="coffee"] .cursor-container {
   transform: rotate(15deg);
 }
 body[data-mode="coffee"] .quotes-container {
-  top: 200px;
-  left: -10px;
+  top: 150px;
+  left: 190px;
   transform: rotate(-5deg);
+  z-index: 10;
 }
 body[data-mode="coffee"] .details {
   top: 45%;
@@ -185,6 +186,8 @@ body[data-mode="clean"] .details .social-links {
 
 body[data-mode="chaos"] .social-links { align-self: flex-end; }
 body[data-mode="chaos"] .note-container { left: 450px; bottom: 250px; transform: rotate(-12deg); }
+body[data-mode="chaos"] .cursor-container { bottom: 110px; left: 490px; transform: rotate(25deg); }
+
 body[data-mode="chaos"] .details {
   left: 500px;
   top: 290px;
@@ -197,11 +200,23 @@ body[data-mode="chaos"] .social-links {
   display: flex;
   justify-content: center;
 }
-body[data-mode="chaos"] .camera-container { left: 15%; top: 5%; transform: rotate(18deg); }
+body[data-mode="chaos"] .camera-container { display: none; }
 body[data-mode="chaos"] .envelope-container { right: 250px; bottom: 180px; transform: rotate(-20deg); }
 
 body[data-mode="clean"] .quotes-container { top: 150px; right: 30px; }
 body[data-mode="chaos"] .quotes-container { top: 100px; right: 300px; }
+body[data-mode="chaos"] .music-player { top: 110px; right: 330px; transform: rotate(25deg); }
+body[data-mode="chaos"] .quotes-container { top: 190px; left: 350px; transform: rotate(20deg); }
+body[data-mode="chaos"] .pen-container { top: 100px; right: 500px; transform: rotate(15deg);width: 35px; }
+body[data-mode="chaos"] .cr-container{ bottom: 130px; left: 360px; transform: rotate(25deg); }
+body[data-mode="chaos"] .music-player { top: 110px; right: 330px; transform: rotate(25deg); }
+body[data-mode="chaos"] .photo-container { display: none; }
+
+
+
+
+
+
 
 .tool { font-family: "c"; }
 
@@ -259,7 +274,12 @@ body[data-mode="chaos"] .quotes-container { top: 100px; right: 300px; }
     left: -10vw !important;
     z-index: 6 !important;
   }
-
+.cr-container{
+  display: none !important;
+}
+.photo-container{
+  display: none !important;
+}
   body[data-mode] .lamp-wrapper::after {
     display: none !important;
   }
@@ -333,11 +353,14 @@ body[data-mode="chaos"] .quotes-container { top: 100px; right: 300px; }
     width: 90vw !important;
     left: 10vw !important;
     top: 50vh !important;
-    text-align: left !important;
+    text-align: center !important;
     z-index: 30 !important;
     transform: rotate(-12deg) !important;
   }
-
+ body[data-mode] .details .social-links {
+    transform: translateX(0) !important;
+    justify-content: center !important;
+  }
   body[data-mode] .details .details-name {
     font-size: 3.5rem !important;
     margin-bottom: 8px !important;
@@ -366,9 +389,7 @@ body[data-mode="chaos"] .quotes-container { top: 100px; right: 300px; }
     margin-top: 12px !important;
   }
 
-  body[data-mode] .details .social-links {
-    display: none !important;
-  }
+ 
 
   /* 6. Fountain Ink Pen — right side alongside notebook */
   body[data-mode] .pen-container {
@@ -394,10 +415,9 @@ body[data-mode="chaos"] .quotes-container { top: 100px; right: 300px; }
   /* 8. Envelope — bottom-right area */
   body[data-mode] .envelope-container {
     width: 130px !important;
-    bottom: 3vh !important;
-    top: auto !important;
+    top: 78vh !important;
     right: -4vw !important;
-    z-index: 41 !important;
+    z-index: 100000000000000;
     transform: rotate(6deg) !important;
   }
 

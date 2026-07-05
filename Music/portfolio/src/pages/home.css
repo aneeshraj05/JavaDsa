@@ -321,3 +321,90 @@ body[data-mode="chaos"] .email-link {
 body[data-mode="chaos"] .quote-text {
   color: #bbb;
 }
+
+/* Make social links visible in mobile mode */
+@media (max-width: 768px) {
+  .desk {
+    position: relative;
+    overflow-y: auto;
+    height: 100vh;
+  }
+  
+  /* Ensure all desk items are visible and properly positioned */
+  .desk > * {
+    position: relative !important;
+    z-index: 1;
+  }
+  
+  /* Fix envelope and other interactive elements */
+  .envelope-click-zone {
+    position: relative !important;
+    display: block !important;
+    z-index: 10 !important;
+  }
+  
+  /* Ensure toolbar and other UI elements are accessible */
+  .toolbar {
+    position: sticky !important;
+    top: 0;
+    z-index: 100 !important;
+    background: rgba(255, 255, 255, 0.95);
+  }
+}
+
+/* Completely hide typewriter animation in desktop mode */
+[data-mode="desktop"] .floating-narrator-comment {
+  transition: none !important;
+  animation: none !important;
+  opacity: 1 !important;
+}
+
+/* If there's a blinking cursor effect in the comment */
+[data-mode="desktop"] .floating-narrator-comment::after {
+  display: none !important;
+  animation: none !important;
+}
+
+/* Additional fix to ensure the typewriter effect doesn't show in desktop mode */
+[data-mode="desktop"] .floating-narrator-comment.typing {
+  border-right: none !important;
+  animation: none !important;
+}
+
+/* Ensure comment text updates instantly in desktop mode */
+[data-mode="desktop"] .floating-narrator-comment span {
+  display: inline !important;
+  opacity: 1 !important;
+  transform: none !important;
+}
+
+/* Make sure contact section is visible on mobile */
+@media (max-width: 768px) {
+  .contact-section {
+    padding: 2rem 1rem !important;
+    margin-bottom: 3rem !important;
+    width: 100% !important;
+  }
+  
+  .contact-card-wrapper {
+    width: 100% !important;
+    padding: 1rem !important;
+  }
+  
+  .contact-footer-metrics {
+    flex-direction: column !important;
+    gap: 1rem !important;
+    align-items: flex-start !important;
+  }
+  
+  .anime-quote-block {
+    width: 100% !important;
+    padding: 0.5rem !important;
+  }
+  
+  .visitor-badge {
+    width: 100% !important;
+    justify-content: flex-start !important;
+  }
+}
+
